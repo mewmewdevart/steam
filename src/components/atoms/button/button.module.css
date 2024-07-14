@@ -1,0 +1,3 @@
+.ButtonPrimary {
+    @apply uppercase text-xsmall font-bold text-brand-tertiary-10 bg-brand-primary-40 hover:bg-brand-primary-50 border-none px-4 min-w-[175px] min-h-[55px];
+}
