@@ -1,9 +1,10 @@
-import './App.css';
+import TitleAnimation from './utils/TitleAnimation';
 
 function App() {
   return (
     <>
-      <section className="bg-red-500 w-full h-[100vh]">
+      <TitleAnimation />
+      <section className="bg-brand-primary-30 w-full h-[100vh]">
         <h1>Hello World!</h1>
       </section>
     </>
