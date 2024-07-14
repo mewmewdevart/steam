@@ -1,0 +1,72 @@
+.Navbar {
+  @apply flex bg-brand-secondary-20 p-4 text-center items-center justify-between;
+}
+
+.NavbarContentPages {
+  @apply flex items-center gap-4 md:gap-8 lg:gap-20;
+}
+
+.NavbarContentUser {
+  @apply flex items-center gap-4 md:gap-6 lg:gap-10 relative;
+}
+
+.NavbarContentPages .NavbarLogo {
+  @apply h-8;
+}
+
+.NavbarContentPages .NavbarList,
+.NavbarContentUser .NavbarList {
+  @apply flex gap-4 md:gap-6 lg:gap-10 items-center;
+}
+
+.NavbarListItem {
+  @apply flex items-center gap-2;
+}
+
+.NavbarContentPages .NavbarListItem a,
+.NavbarContentUser .NavbarListItem a {
+  @apply uppercase text-small font-bold text-brand-tertiary-10 hover:text-brand-primary-40 cursor-pointer no-underline;
+}
+
+.NavbarContentUser .NavbarListItem a {
+  @apply hover:text-brand-tertiary-10;
+}
+
+.NavbarContentUser .UserProfileImage {
+  @apply w-10 h-10 cursor-pointer;
+}
+
+.DropdownMenu {
+  @apply cursor-pointer absolute right-[-16px] mt-56 p-4 text-brand-tertiary-10 bg-brand-secondary-20 flex flex-col z-50;
+}
+
+.DropdownItem {
+  @apply p-2 hover:bg-brand-primary-40 hover:text-brand-tertiary-10;
+}
+
+.DropdownItem a {
+  @apply block text-gray-700 no-underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .NavbarContentPages {
+    @apply hidden;
+  }
+
+  .NavbarContentUser {
+    @apply flex-col items-start;
+  }
+
+  .NavbarContentUser .NavbarList {
+    @apply flex w-full;
+  }
+
+  .NavbarContentUser .UserProfileImage {
+    @apply w-8 h-8;
+  }
+
+  .DropdownMenu {
+    @apply right-[-16px]  mt-56 w-[200px];
+  }
+}
