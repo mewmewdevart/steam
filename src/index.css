@@ -14,3 +14,89 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Universal Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Typography */
+body {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: inherit;
+}
+
+/* Remove default styles for lists */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove default border styles for form elements */
+input, button, textarea, select {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+}
+
+/* Ensure focus visibility */
+:focus {
+  outline: 2px solid #007bff; 
+  outline-offset: 2px;
+}
+
+/* Links */
+a {
+  text-decoration: none; 
+  color: #007bff; 
+}
+
+a:focus, a:hover {
+  text-decoration: underline; 
+}
+
+/* Tables */
+table {
+  border-collapse: collapse; 
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+}
+
+/* Form elements */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: #f8f9fa;
+  border: 1px solid #ced4da; 
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+/* Accessibility Enhancements */
+visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.875rem;
+  }
+}

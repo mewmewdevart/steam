@@ -1,0 +1,19 @@
+# robots.txt for https://www.yourwebsite.com/
+
+# Allow all user agents access to all content
+User-agent: *
+Disallow:
+
+# Block specific directories
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+Disallow: /cgi-bin/
+
+# Allow specific user agents access to certain parts
+User-agent: Googlebot
+Disallow: /private/
+Allow: /public/
+
+# Sitemap location
+Sitemap: https://www.yourwebsite.com/sitemap.xml

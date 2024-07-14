@@ -38,7 +38,7 @@ const TitleAnimation: React.FC = () => {
 
   return (
     <div>
-      <button onClick={toggleAnimation} className="absolute hidden">
+      <button onClick={toggleAnimation} className="hidden">
         {animationEnabled ? 'Desativar Animação de Título' : 'Ativar Animação de Título'}
       </button>
     </div>
