@@ -10,24 +10,26 @@ export interface IconProps extends React.ComponentProps<'svg'> {
   icon: IconName;
   extraClassNames?: string;
   ariaLabel?: string;
-  type: string;
+  type: 'solid' | 'outline';
 }
 
 const HeroIcon: React.FC<IconProps> = ({ icon, extraClassNames, ariaLabel, type, ...attrs }) => {
-  let IconComponent;
+  let IconComponent: React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined;
 
   /* eslint-disable no-console */
-  if (type == 'solid' && SolidIcons[icon]) {
-    IconComponent = SolidIcons[icon];
-  } else if (type == 'outline' && OutlineIcons[icon]) {
-    IconComponent = OutlineIcons[icon];
-  } else {
+  if (type === 'solid') {
+    IconComponent = SolidIcons[icon as keyof typeof SolidIcons];
+  } else if (type === 'outline') {
+    IconComponent = OutlineIcons[icon as keyof typeof OutlineIcons];
+  }
+  
+  if (!IconComponent) {
     console.error(`Ícone "${icon}" não encontrado.`);
     return null;
   }
   /* eslint-enable no-console */
 
-  return <IconComponent className={`${extraClassNames}`} aria-label={ariaLabel} {...attrs} />;
+  return <IconComponent className={extraClassNames} aria-label={ariaLabel} {...attrs} />;
 };
 
 export default HeroIcon;

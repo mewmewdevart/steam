@@ -19,7 +19,7 @@ const Carousel: React.FC<CarouselProps> = ({ imagesCarousel, logoCarousel, label
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="max-w-screen-2xl mx-auto pt-[100px]">
+        <div className="2xl:max-w-screen-2xl lg:max-w-screen-lg md:max-w-screen-md mx-auto pt-[100px]">
           <img src={logoCarousel} alt="Banner" />
           <p className="w-[500px] text-white text-large font-medium py-[30px]">{labelCarousel}</p>
           <Button label="Buy Now" extraClassNames="text-paragraph-large" />

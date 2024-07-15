@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import HeroIcon from '@components/atoms/hero-icon';
-
 import useScreenSize from '@hooks/useScreenSize';
+import HeroIcon from '@components/atoms/hero-icon';
 import UserProfile from '@assets/larissa.png';
 import LogoIcon from '@assets/steam-icon.svg';
 
@@ -26,7 +25,7 @@ const Navbar = () => {
   const isSmallScreen = useScreenSize();
 
   const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
+    setDropdownOpen(prev => !prev);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -35,9 +34,9 @@ const Navbar = () => {
     }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDown = (event: React.KeyboardEvent, action: () => void) => {
     if (event.key === 'Enter') {
-      toggleDropdown();
+      action();
     }
   };
 
@@ -60,7 +59,7 @@ const Navbar = () => {
           <img src={LogoIcon} alt="Steam's logo" className="cursor-pointer" />
         </a>
         <ul className={style.NavbarList}>
-          {NAV_ITEMS.map((item) => (
+          {NAV_ITEMS.map(item => (
             <li key={item.href} className={style.NavbarListItem}>
               <a href={item.href} className={style.NavbarLink} aria-label={item.label}>
                 {item.label}
@@ -71,52 +70,55 @@ const Navbar = () => {
       </div>
       <div className={style.NavbarContentUser}>
         <ul className={style.NavbarList}>
-          <li className={style.NavbarListItem}>
+          <li className={style.NotificationIcon}>
             <HeroIcon
               icon="BellIcon"
               type="outline"
               extraClassNames="w-6 h-6 text-brand-tertiary-10 cursor-pointer"
               aria-label="Notifications"
               tabIndex={0}
-              onKeyDown={handleKeyDown}
+              onKeyDown={e => handleKeyDown(e, toggleDropdown)}
               role="button"
+              aria-hidden="false"
             />
           </li>
-          <li className={style.NavbarListItem}>
+          <li className={style.NotificationIcon}>
             <HeroIcon
               icon="ChatBubbleOvalLeftIcon"
               type="outline"
               extraClassNames="w-6 h-6 text-brand-tertiary-10 cursor-pointer"
               aria-label="Messages"
               tabIndex={0}
-              onKeyDown={handleKeyDown}
+              onKeyDown={e => handleKeyDown(e, toggleDropdown)}
               role="button"
+              aria-hidden="false"
             />
           </li>
           <li
-            className={style.NavbarListItem}
+            className="flex items-center gap-2 relative h-[3rem]"
             onClick={toggleDropdown}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') toggleDropdown();
-            }}
+            onKeyDown={e => handleKeyDown(e, toggleDropdown)}
             aria-haspopup="true"
             aria-expanded={dropdownOpen}
             role="button"
             tabIndex={0}
           >
-            <img src={UserProfile} alt="Profile Photo" className={style.UserProfileImage} tabIndex={0} />
+            <div className={style.UserProfile}>
+              <img src={UserProfile} alt="Profile Photo" className={style.UserProfileImage} tabIndex={0} />
+            </div>
             <HeroIcon
               icon="ChevronDownIcon"
               type="outline"
               extraClassNames="w-6 h-6 text-brand-tertiary-10 cursor-pointer"
               aria-label={dropdownOpen ? 'Close dropdown menu' : 'Open dropdown menu'}
               tabIndex={0}
-              onKeyDown={handleKeyDown}
+              onKeyDown={e => handleKeyDown(e, toggleDropdown)}
               role="button"
+              aria-hidden="false"
             />
             {dropdownOpen && (
               <ul className={style.DropdownMenu} ref={dropdownRef} aria-label="User menu" tabIndex={0}>
-                {DROPDOWN_ITEMS.map((item) => (
+                {DROPDOWN_ITEMS.map(item => (
                   <li key={item.href} className={style.DropdownItem} tabIndex={0}>
                     <a href={item.href} aria-label={item.label}>
                       {item.label}
